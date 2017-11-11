@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.szx.cgzb.dao.TexcelCellRangeAddressTabMapper">
+	<resultMap id="BaseResultMap" type="cn.szx.cgzb.model.TexcelCellRangeAddressTab">
+		<id column="ID" property="id" jdbcType="INTEGER" />
+		<result column="FIRST_ROW" property="firstRow" jdbcType="INTEGER" />
+		<result column="LAST_ROW" property="lastRow" jdbcType="INTEGER" />
+		<result column="FIRST_COL" property="firstCol" jdbcType="INTEGER" />
+		<result column="LAST_COL" property="lastCol" jdbcType="INTEGER" />
+		<result column="OWNED_SHEET" property="ownedSheet" jdbcType="VARCHAR" />
+		<result column="ATTRIBUTE1" property="attribute1" jdbcType="VARCHAR" />
+		<result column="ATTRIBUTE2" property="attribute2" jdbcType="VARCHAR" />
+		<result column="USABLE_STATUS" property="usableStatus" jdbcType="CHAR" />
+		<result column="CREATE_DATETIME" property="createDatetime" jdbcType="TIMESTAMP" />
+		<result column="UPDATE_DATETIME" property="updateDatetime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		ID, FIRST_ROW, LAST_ROW, FIRST_COL, LAST_COL, OWNED_SHEET, ATTRIBUTE1, ATTRIBUTE2,
+		USABLE_STATUS, CREATE_DATETIME, UPDATE_DATETIME
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from excel_cell_range_address_tab
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from excel_cell_range_address_tab
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="cn.szx.cgzb.model.TexcelCellRangeAddressTab">
+		insert into excel_cell_range_address_tab (ID, FIRST_ROW, LAST_ROW,
+		FIRST_COL, LAST_COL, OWNED_SHEET,
+		ATTRIBUTE1, ATTRIBUTE2, USABLE_STATUS,
+		CREATE_DATETIME, UPDATE_DATETIME)
+		values (#{id,jdbcType=INTEGER}, #{firstRow,jdbcType=INTEGER}, #{lastRow,jdbcType=INTEGER},
+		#{firstCol,jdbcType=INTEGER}, #{lastCol,jdbcType=INTEGER}, #{ownedSheet,jdbcType=VARCHAR},
+		#{attribute1,jdbcType=VARCHAR}, #{attribute2,jdbcType=VARCHAR}, #{usableStatus,jdbcType=CHAR},
+		#{createDatetime,jdbcType=TIMESTAMP}, #{updateDatetime,jdbcType=TIMESTAMP})
+	</insert>
+	<insert id="insertSelective" parameterType="cn.szx.cgzb.model.TexcelCellRangeAddressTab">
+		insert into excel_cell_range_address_tab
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="firstRow != null">
+				FIRST_ROW,
+			</if>
+			<if test="lastRow != null">
+				LAST_ROW,
+			</if>
+			<if test="firstCol != null">
+				FIRST_COL,
+			</if>
+			<if test="lastCol != null">
+				LAST_COL,
+			</if>
+			<if test="ownedSheet != null">
+				OWNED_SHEET,
+			</if>
+			<if test="attribute1 != null">
+				ATTRIBUTE1,
+			</if>
+			<if test="attribute2 != null">
+				ATTRIBUTE2,
+			</if>
+			<if test="usableStatus != null">
+				USABLE_STATUS,
+			</if>
+			<if test="createDatetime != null">
+				CREATE_DATETIME,
+			</if>
+			<if test="updateDatetime != null">
+				UPDATE_DATETIME,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="firstRow != null">
+				#{firstRow,jdbcType=INTEGER},
+			</if>
+			<if test="lastRow != null">
+				#{lastRow,jdbcType=INTEGER},
+			</if>
+			<if test="firstCol != null">
+				#{firstCol,jdbcType=INTEGER},
+			</if>
+			<if test="lastCol != null">
+				#{lastCol,jdbcType=INTEGER},
+			</if>
+			<if test="ownedSheet != null">
+				#{ownedSheet,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute1 != null">
+				#{attribute1,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute2 != null">
+				#{attribute2,jdbcType=VARCHAR},
+			</if>
+			<if test="usableStatus != null">
+				#{usableStatus,jdbcType=CHAR},
+			</if>
+			<if test="createDatetime != null">
+				#{createDatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateDatetime != null">
+				#{updateDatetime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.szx.cgzb.model.TexcelCellRangeAddressTab">
+		update excel_cell_range_address_tab
+		<set>
+			<if test="firstRow != null">
+				FIRST_ROW = #{firstRow,jdbcType=INTEGER},
+			</if>
+			<if test="lastRow != null">
+				LAST_ROW = #{lastRow,jdbcType=INTEGER},
+			</if>
+			<if test="firstCol != null">
+				FIRST_COL = #{firstCol,jdbcType=INTEGER},
+			</if>
+			<if test="lastCol != null">
+				LAST_COL = #{lastCol,jdbcType=INTEGER},
+			</if>
+			<if test="ownedSheet != null">
+				OWNED_SHEET = #{ownedSheet,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute1 != null">
+				ATTRIBUTE1 = #{attribute1,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute2 != null">
+				ATTRIBUTE2 = #{attribute2,jdbcType=VARCHAR},
+			</if>
+			<if test="usableStatus != null">
+				USABLE_STATUS = #{usableStatus,jdbcType=CHAR},
+			</if>
+			<if test="createDatetime != null">
+				CREATE_DATETIME = #{createDatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateDatetime != null">
+				UPDATE_DATETIME = #{updateDatetime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.szx.cgzb.model.TexcelCellRangeAddressTab">
+		update excel_cell_range_address_tab
+		set FIRST_ROW = #{firstRow,jdbcType=INTEGER},
+		LAST_ROW = #{lastRow,jdbcType=INTEGER},
+		FIRST_COL = #{firstCol,jdbcType=INTEGER},
+		LAST_COL = #{lastCol,jdbcType=INTEGER},
+		OWNED_SHEET = #{ownedSheet,jdbcType=VARCHAR},
+		ATTRIBUTE1 = #{attribute1,jdbcType=VARCHAR},
+		ATTRIBUTE2 = #{attribute2,jdbcType=VARCHAR},
+		USABLE_STATUS = #{usableStatus,jdbcType=CHAR},
+		CREATE_DATETIME = #{createDatetime,jdbcType=TIMESTAMP},
+		UPDATE_DATETIME = #{updateDatetime,jdbcType=TIMESTAMP}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+
+	<!-- MyWriteMethod -->
+	<select id="selectByParams" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from excel_cell_range_address_tab
+		<where>
+			1=1
+			<if test="firstRow != null">
+				and FIRST_ROW = #{firstRow,jdbcType=INTEGER},
+			</if>
+			<if test="lastRow != null">
+				and LAST_ROW = #{lastRow,jdbcType=INTEGER},
+			</if>
+			<if test="firstCol != null">
+				and FIRST_COL = #{firstCol,jdbcType=INTEGER},
+			</if>
+			<if test="lastCol != null">
+				and LAST_COL = #{lastCol,jdbcType=INTEGER},
+			</if>
+			<if test="ownedSheet != null">
+				and OWNED_SHEET = #{ownedSheet,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute1 != null">
+				and ATTRIBUTE1 = #{attribute1,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute2 != null">
+				and ATTRIBUTE2 = #{attribute2,jdbcType=VARCHAR},
+			</if>
+			<if test="usableStatus != null">
+				and USABLE_STATUS = #{usableStatus,jdbcType=CHAR},
+			</if>
+			<if test="createDatetime != null">
+				and CREATE_DATETIME = #{createDatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateDatetime != null">
+				and UPDATE_DATETIME = #{updateDatetime,jdbcType=TIMESTAMP},
+			</if>
+		</where>
+	</select>
+	
+</mapper>

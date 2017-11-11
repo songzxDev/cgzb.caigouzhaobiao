@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.szx.cgzb.dao.TdepartmentAuditStaffInfoSHMapper">
+	<resultMap id="BaseResultMap" type="cn.szx.cgzb.model.TdepartmentAuditStaffInfoSH">
+		<id column="ID" property="id" jdbcType="BIGINT" />
+		<result column="BM_OWNED_SHEET" property="bmOwnedSheet" jdbcType="VARCHAR" />
+		<result column="BM_EXCEL_CELL_COLUMN_INDEX" property="bmExcelCellColumnIndex" jdbcType="INTEGER" />
+		<result column="BM_EXCEL_CELL_ROW_INDEX" property="bmExcelCellRowIndex" jdbcType="INTEGER" />
+		<result column="BM_EXCEL_CELL_VALUE" property="bmExcelCellValue" jdbcType="VARCHAR" />
+		<result column="RY_EXCEL_CELL_VALUE_SJ" property="ryExcelCellValueSj" jdbcType="VARCHAR" />
+		<result column="RY_EXCEL_CELL_VALUE_SJL" property="ryExcelCellValueSjl" jdbcType="VARCHAR" />
+		<result column="RY_EXCEL_CELL_VALUE_KJ" property="ryExcelCellValueKj" jdbcType="VARCHAR" />
+		<result column="RY_EXCEL_CELL_VALUE_KJL" property="ryExcelCellValueKjl" jdbcType="VARCHAR" />
+		<result column="RY_EXCEL_CELL_VALUE_FZ" property="ryExcelCellValueFz" jdbcType="VARCHAR" />
+		<result column="RY_EXCEL_CELL_VALUE_FZL" property="ryExcelCellValueFzl" jdbcType="VARCHAR" />
+		<result column="RY_EXCEL_CELL_VALUE_ZZ" property="ryExcelCellValueZz" jdbcType="VARCHAR" />
+		<result column="RY_EXCEL_CELL_VALUE_ZZL" property="ryExcelCellValueZzl" jdbcType="VARCHAR" />
+		<result column="ATTRIBUTE1" property="attribute1" jdbcType="VARCHAR" />
+		<result column="ATTRIBUTE2" property="attribute2" jdbcType="VARCHAR" />
+		<result column="USABLE_STATUS" property="usableStatus" jdbcType="CHAR" />
+		<result column="CREATE_DATETIME" property="createDatetime" jdbcType="TIMESTAMP" />
+		<result column="UPDATE_DATETIME" property="updateDatetime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		ID, BM_OWNED_SHEET, BM_EXCEL_CELL_COLUMN_INDEX, BM_EXCEL_CELL_ROW_INDEX, BM_EXCEL_CELL_VALUE,
+		RY_EXCEL_CELL_VALUE_SJ, RY_EXCEL_CELL_VALUE_SJL, RY_EXCEL_CELL_VALUE_KJ, RY_EXCEL_CELL_VALUE_KJL,
+		RY_EXCEL_CELL_VALUE_FZ, RY_EXCEL_CELL_VALUE_FZL, RY_EXCEL_CELL_VALUE_ZZ, RY_EXCEL_CELL_VALUE_ZZL,
+		ATTRIBUTE1, ATTRIBUTE2, USABLE_STATUS, CREATE_DATETIME, UPDATE_DATETIME
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from department_audit_staff_info_sh
+		where ID = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from department_audit_staff_info_sh
+		where ID = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="cn.szx.cgzb.model.TdepartmentAuditStaffInfoSH">
+		insert into department_audit_staff_info_sh (ID, BM_OWNED_SHEET, BM_EXCEL_CELL_COLUMN_INDEX,
+		BM_EXCEL_CELL_ROW_INDEX, BM_EXCEL_CELL_VALUE,
+		RY_EXCEL_CELL_VALUE_SJ, RY_EXCEL_CELL_VALUE_SJL,
+		RY_EXCEL_CELL_VALUE_KJ, RY_EXCEL_CELL_VALUE_KJL,
+		RY_EXCEL_CELL_VALUE_FZ, RY_EXCEL_CELL_VALUE_FZL,
+		RY_EXCEL_CELL_VALUE_ZZ, RY_EXCEL_CELL_VALUE_ZZL,
+		ATTRIBUTE1, ATTRIBUTE2, USABLE_STATUS,
+		CREATE_DATETIME, UPDATE_DATETIME)
+		values (#{id,jdbcType=BIGINT}, #{bmOwnedSheet,jdbcType=VARCHAR}, #{bmExcelCellColumnIndex,jdbcType=INTEGER},
+		#{bmExcelCellRowIndex,jdbcType=INTEGER}, #{bmExcelCellValue,jdbcType=VARCHAR},
+		#{ryExcelCellValueSj,jdbcType=VARCHAR}, #{ryExcelCellValueSjl,jdbcType=VARCHAR},
+		#{ryExcelCellValueKj,jdbcType=VARCHAR}, #{ryExcelCellValueKjl,jdbcType=VARCHAR},
+		#{ryExcelCellValueFz,jdbcType=VARCHAR}, #{ryExcelCellValueFzl,jdbcType=VARCHAR},
+		#{ryExcelCellValueZz,jdbcType=VARCHAR}, #{ryExcelCellValueZzl,jdbcType=VARCHAR},
+		#{attribute1,jdbcType=VARCHAR},
+		#{attribute2,jdbcType=VARCHAR}, #{usableStatus,jdbcType=CHAR},
+		#{createDatetime,jdbcType=TIMESTAMP}, #{updateDatetime,jdbcType=TIMESTAMP})
+	</insert>
+	<insert id="insertSelective" parameterType="cn.szx.cgzb.model.TdepartmentAuditStaffInfoSH">
+		insert into department_audit_staff_info_sh
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="bmOwnedSheet != null">
+				BM_OWNED_SHEET,
+			</if>
+			<if test="bmExcelCellColumnIndex != null">
+				BM_EXCEL_CELL_COLUMN_INDEX,
+			</if>
+			<if test="bmExcelCellRowIndex != null">
+				BM_EXCEL_CELL_ROW_INDEX,
+			</if>
+			<if test="bmExcelCellValue != null">
+				BM_EXCEL_CELL_VALUE,
+			</if>
+			<if test="ryExcelCellValueSj != null">
+				RY_EXCEL_CELL_VALUE_SJ,
+			</if>
+			<if test="ryExcelCellValueSjl != null">
+				RY_EXCEL_CELL_VALUE_SJL,
+			</if>
+			<if test="ryExcelCellValueKj != null">
+				RY_EXCEL_CELL_VALUE_KJ,
+			</if>
+			<if test="ryExcelCellValueKjl != null">
+				RY_EXCEL_CELL_VALUE_KJL,
+			</if>
+			<if test="ryExcelCellValueFz != null">
+				RY_EXCEL_CELL_VALUE_FZ,
+			</if>
+			<if test="ryExcelCellValueFzl != null">
+				RY_EXCEL_CELL_VALUE_FZL,
+			</if>
+			<if test="ryExcelCellValueZz != null">
+				RY_EXCEL_CELL_VALUE_ZZ,
+			</if>
+			<if test="ryExcelCellValueZzl != null">
+				RY_EXCEL_CELL_VALUE_ZZL,
+			</if>
+			<if test="attribute1 != null">
+				ATTRIBUTE1,
+			</if>
+			<if test="attribute2 != null">
+				ATTRIBUTE2,
+			</if>
+			<if test="usableStatus != null">
+				USABLE_STATUS,
+			</if>
+			<if test="createDatetime != null">
+				CREATE_DATETIME,
+			</if>
+			<if test="updateDatetime != null">
+				UPDATE_DATETIME,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="bmOwnedSheet != null">
+				#{bmOwnedSheet,jdbcType=VARCHAR},
+			</if>
+			<if test="bmExcelCellColumnIndex != null">
+				#{bmExcelCellColumnIndex,jdbcType=INTEGER},
+			</if>
+			<if test="bmExcelCellRowIndex != null">
+				#{bmExcelCellRowIndex,jdbcType=INTEGER},
+			</if>
+			<if test="bmExcelCellValue != null">
+				#{bmExcelCellValue,jdbcType=VARCHAR},
+			</if>
+			<if test="ryExcelCellValueSj != null">
+				#{ryExcelCellValueSj,jdbcType=VARCHAR},
+			</if>
+			<if test="ryExcelCellValueSjl != null">
+				#{ryExcelCellValueSjl,jdbcType=VARCHAR},
+			</if>
+			<if test="ryExcelCellValueKj != null">
+				#{ryExcelCellValueKj,jdbcType=VARCHAR},
+			</if>
+			<if test="ryExcelCellValueKjl != null">
+				#{ryExcelCellValueKjl,jdbcType=VARCHAR},
+			</if>
+			<if test="ryExcelCellValueFz != null">
+				#{ryExcelCellValueFz,jdbcType=VARCHAR},
+			</if>
+			<if test="ryExcelCellValueFzl != null">
+				#{ryExcelCellValueFzl,jdbcType=VARCHAR},
+			</if>
+			<if test="ryExcelCellValueZz != null">
+				#{ryExcelCellValueZz,jdbcType=VARCHAR},
+			</if>
+			<if test="ryExcelCellValueZzl != null">
+				#{ryExcelCellValueZzl,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute1 != null">
+				#{attribute1,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute2 != null">
+				#{attribute2,jdbcType=VARCHAR},
+			</if>
+			<if test="usableStatus != null">
+				#{usableStatus,jdbcType=CHAR},
+			</if>
+			<if test="createDatetime != null">
+				#{createDatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateDatetime != null">
+				#{updateDatetime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.szx.cgzb.model.TdepartmentAuditStaffInfoSH">
+		update department_audit_staff_info_sh
+		<set>
+			<if test="bmOwnedSheet != null">
+				BM_OWNED_SHEET = #{bmOwnedSheet,jdbcType=VARCHAR},
+			</if>
+			<if test="bmExcelCellColumnIndex != null">
+				BM_EXCEL_CELL_COLUMN_INDEX = #{bmExcelCellColumnIndex,jdbcType=INTEGER},
+			</if>
+			<if test="bmExcelCellRowIndex != null">
+				BM_EXCEL_CELL_ROW_INDEX = #{bmExcelCellRowIndex,jdbcType=INTEGER},
+			</if>
+			<if test="bmExcelCellValue != null">
+				BM_EXCEL_CELL_VALUE = #{bmExcelCellValue,jdbcType=VARCHAR},
+			</if>
+			<if test="ryExcelCellValueSj != null">
+				RY_EXCEL_CELL_VALUE_SJ = #{ryExcelCellValueSj,jdbcType=VARCHAR},
+			</if>
+			<if test="ryExcelCellValueSjl != null">
+				RY_EXCEL_CELL_VALUE_SJL = #{ryExcelCellValueSjl,jdbcType=VARCHAR},
+			</if>
+			<if test="ryExcelCellValueKj != null">
+				RY_EXCEL_CELL_VALUE_KJ = #{ryExcelCellValueKj,jdbcType=VARCHAR},
+			</if>
+			<if test="ryExcelCellValueKjl != null">
+				RY_EXCEL_CELL_VALUE_KJL = #{ryExcelCellValueKjl,jdbcType=VARCHAR},
+			</if>
+			<if test="ryExcelCellValueFz != null">
+				RY_EXCEL_CELL_VALUE_FZ = #{ryExcelCellValueFz,jdbcType=VARCHAR},
+			</if>
+			<if test="ryExcelCellValueFzl != null">
+				RY_EXCEL_CELL_VALUE_FZL = #{ryExcelCellValueFzl,jdbcType=VARCHAR},
+			</if>
+			<if test="ryExcelCellValueZz != null">
+				RY_EXCEL_CELL_VALUE_ZZ = #{ryExcelCellValueZz,jdbcType=VARCHAR},
+			</if>
+			<if test="ryExcelCellValueZzl != null">
+				RY_EXCEL_CELL_VALUE_ZZL = #{ryExcelCellValueZzl,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute1 != null">
+				ATTRIBUTE1 = #{attribute1,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute2 != null">
+				ATTRIBUTE2 = #{attribute2,jdbcType=VARCHAR},
+			</if>
+			<if test="usableStatus != null">
+				USABLE_STATUS = #{usableStatus,jdbcType=CHAR},
+			</if>
+			<if test="createDatetime != null">
+				CREATE_DATETIME = #{createDatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateDatetime != null">
+				UPDATE_DATETIME = #{updateDatetime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.szx.cgzb.model.TdepartmentAuditStaffInfoSH">
+		update department_audit_staff_info_sh
+		set BM_OWNED_SHEET = #{bmOwnedSheet,jdbcType=VARCHAR},
+		BM_EXCEL_CELL_COLUMN_INDEX = #{bmExcelCellColumnIndex,jdbcType=INTEGER},
+		BM_EXCEL_CELL_ROW_INDEX = #{bmExcelCellRowIndex,jdbcType=INTEGER},
+		BM_EXCEL_CELL_VALUE = #{bmExcelCellValue,jdbcType=VARCHAR},
+		RY_EXCEL_CELL_VALUE_SJ = #{ryExcelCellValueSj,jdbcType=VARCHAR},
+		RY_EXCEL_CELL_VALUE_SJL = #{ryExcelCellValueSjl,jdbcType=VARCHAR},
+		RY_EXCEL_CELL_VALUE_KJ = #{ryExcelCellValueKj,jdbcType=VARCHAR},
+		RY_EXCEL_CELL_VALUE_KJL = #{ryExcelCellValueKjl,jdbcType=VARCHAR},
+		RY_EXCEL_CELL_VALUE_FZ = #{ryExcelCellValueFz,jdbcType=VARCHAR},
+		RY_EXCEL_CELL_VALUE_FZL = #{ryExcelCellValueFzl,jdbcType=VARCHAR},
+		RY_EXCEL_CELL_VALUE_ZZ = #{ryExcelCellValueZz,jdbcType=VARCHAR},
+		RY_EXCEL_CELL_VALUE_ZZL = #{ryExcelCellValueZzl,jdbcType=VARCHAR},
+		ATTRIBUTE1 = #{attribute1,jdbcType=VARCHAR},
+		ATTRIBUTE2 = #{attribute2,jdbcType=VARCHAR},
+		USABLE_STATUS = #{usableStatus,jdbcType=CHAR},
+		CREATE_DATETIME = #{createDatetime,jdbcType=TIMESTAMP},
+		UPDATE_DATETIME = #{updateDatetime,jdbcType=TIMESTAMP}
+		where ID = #{id,jdbcType=BIGINT}
+	</update>
+
+	<!-- MyWriteMethod -->
+	<select id="selectAll" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from department_audit_staff_info_sh
+	</select>
+
+	<select id="selectByParams" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from department_audit_staff_info_sh
+		<where>
+			<if test="bmOwnedSheet != null">
+				BM_OWNED_SHEET = #{bmOwnedSheet,jdbcType=VARCHAR}
+			</if>
+			<if test="bmExcelCellColumnIndex != null">
+				and BM_EXCEL_CELL_COLUMN_INDEX = #{bmExcelCellColumnIndex,jdbcType=INTEGER}
+			</if>
+			<if test="bmExcelCellRowIndex != null">
+				and BM_EXCEL_CELL_ROW_INDEX = #{bmExcelCellRowIndex,jdbcType=INTEGER}
+			</if>
+			<if test="bmExcelCellValue != null">
+				and BM_EXCEL_CELL_VALUE = #{bmExcelCellValue,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+	
+</mapper>

@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.szx.cgzb.dao.TexcelCellTabMapper">
+	<resultMap id="BaseResultMap" type="cn.szx.cgzb.model.TexcelCellTab">
+		<id column="ID" property="id" jdbcType="BIGINT" />
+		<result column="EXCEL_CELL_ROW_INDEX" property="excelCellRowIndex" jdbcType="INTEGER" />
+		<result column="EXCEL_CELL_COLUMN_INDEX" property="excelCellColumnIndex" jdbcType="INTEGER" />
+		<result column="EXCEL_CELL_VALUE" property="excelCellValue" jdbcType="VARCHAR" />
+		<result column="OWNED_SHEET" property="ownedSheet" jdbcType="VARCHAR" />
+		<result column="ATTRIBUTE1" property="attribute1" jdbcType="VARCHAR" />
+		<result column="ATTRIBUTE2" property="attribute2" jdbcType="VARCHAR" />
+		<result column="USABLE_STATUS" property="usableStatus" jdbcType="CHAR" />
+		<result column="CREATE_DATETIME" property="createDatetime" jdbcType="TIMESTAMP" />
+		<result column="UPDATE_DATETIME" property="updateDatetime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		ID, EXCEL_CELL_ROW_INDEX, EXCEL_CELL_COLUMN_INDEX, EXCEL_CELL_VALUE, OWNED_SHEET,
+		ATTRIBUTE1, ATTRIBUTE2, USABLE_STATUS, CREATE_DATETIME, UPDATE_DATETIME
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from excel_cell_tab
+		where ID = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from excel_cell_tab
+		where ID = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="cn.szx.cgzb.model.TexcelCellTab">
+		insert into excel_cell_tab (ID, EXCEL_CELL_ROW_INDEX, EXCEL_CELL_COLUMN_INDEX,
+		EXCEL_CELL_VALUE, OWNED_SHEET, ATTRIBUTE1,
+		ATTRIBUTE2, USABLE_STATUS, CREATE_DATETIME,
+		UPDATE_DATETIME)
+		values (#{id,jdbcType=BIGINT}, #{excelCellRowIndex,jdbcType=INTEGER}, #{excelCellColumnIndex,jdbcType=INTEGER},
+		#{excelCellValue,jdbcType=VARCHAR}, #{ownedSheet,jdbcType=VARCHAR}, #{attribute1,jdbcType=VARCHAR},
+		#{attribute2,jdbcType=VARCHAR}, #{usableStatus,jdbcType=CHAR}, #{createDatetime,jdbcType=TIMESTAMP},
+		#{updateDatetime,jdbcType=TIMESTAMP})
+	</insert>
+	<insert id="insertSelective" parameterType="cn.szx.cgzb.model.TexcelCellTab">
+		insert into excel_cell_tab
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="excelCellRowIndex != null">
+				EXCEL_CELL_ROW_INDEX,
+			</if>
+			<if test="excelCellColumnIndex != null">
+				EXCEL_CELL_COLUMN_INDEX,
+			</if>
+			<if test="excelCellValue != null">
+				EXCEL_CELL_VALUE,
+			</if>
+			<if test="ownedSheet != null">
+				OWNED_SHEET,
+			</if>
+			<if test="attribute1 != null">
+				ATTRIBUTE1,
+			</if>
+			<if test="attribute2 != null">
+				ATTRIBUTE2,
+			</if>
+			<if test="usableStatus != null">
+				USABLE_STATUS,
+			</if>
+			<if test="createDatetime != null">
+				CREATE_DATETIME,
+			</if>
+			<if test="updateDatetime != null">
+				UPDATE_DATETIME,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="excelCellRowIndex != null">
+				#{excelCellRowIndex,jdbcType=INTEGER},
+			</if>
+			<if test="excelCellColumnIndex != null">
+				#{excelCellColumnIndex,jdbcType=INTEGER},
+			</if>
+			<if test="excelCellValue != null">
+				#{excelCellValue,jdbcType=VARCHAR},
+			</if>
+			<if test="ownedSheet != null">
+				#{ownedSheet,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute1 != null">
+				#{attribute1,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute2 != null">
+				#{attribute2,jdbcType=VARCHAR},
+			</if>
+			<if test="usableStatus != null">
+				#{usableStatus,jdbcType=CHAR},
+			</if>
+			<if test="createDatetime != null">
+				#{createDatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateDatetime != null">
+				#{updateDatetime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.szx.cgzb.model.TexcelCellTab">
+		update excel_cell_tab
+		<set>
+			<if test="excelCellRowIndex != null">
+				EXCEL_CELL_ROW_INDEX = #{excelCellRowIndex,jdbcType=INTEGER},
+			</if>
+			<if test="excelCellColumnIndex != null">
+				EXCEL_CELL_COLUMN_INDEX = #{excelCellColumnIndex,jdbcType=INTEGER},
+			</if>
+			<if test="excelCellValue != null">
+				EXCEL_CELL_VALUE = #{excelCellValue,jdbcType=VARCHAR},
+			</if>
+			<if test="ownedSheet != null">
+				OWNED_SHEET = #{ownedSheet,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute1 != null">
+				ATTRIBUTE1 = #{attribute1,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute2 != null">
+				ATTRIBUTE2 = #{attribute2,jdbcType=VARCHAR},
+			</if>
+			<if test="usableStatus != null">
+				USABLE_STATUS = #{usableStatus,jdbcType=CHAR},
+			</if>
+			<if test="createDatetime != null">
+				CREATE_DATETIME = #{createDatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateDatetime != null">
+				UPDATE_DATETIME = #{updateDatetime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.szx.cgzb.model.TexcelCellTab">
+		update excel_cell_tab
+		set EXCEL_CELL_ROW_INDEX = #{excelCellRowIndex,jdbcType=INTEGER},
+		EXCEL_CELL_COLUMN_INDEX = #{excelCellColumnIndex,jdbcType=INTEGER},
+		EXCEL_CELL_VALUE = #{excelCellValue,jdbcType=VARCHAR},
+		OWNED_SHEET = #{ownedSheet,jdbcType=VARCHAR},
+		ATTRIBUTE1 = #{attribute1,jdbcType=VARCHAR},
+		ATTRIBUTE2 = #{attribute2,jdbcType=VARCHAR},
+		USABLE_STATUS = #{usableStatus,jdbcType=CHAR},
+		CREATE_DATETIME = #{createDatetime,jdbcType=TIMESTAMP},
+		UPDATE_DATETIME = #{updateDatetime,jdbcType=TIMESTAMP}
+		where ID = #{id,jdbcType=BIGINT}
+	</update>
+
+	<!-- MyWriteMethod -->
+	<select id="selectByParams" resultMap="BaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from excel_cell_tab
+		<where>
+			1=1
+			<if test="ownedSheet != null">
+				and OWNED_SHEET = #{ownedSheet,jdbcType=VARCHAR}
+			</if>
+			<if test="excelCellValue != null">
+				and EXCEL_CELL_VALUE = #{excelCellValue,jdbcType=VARCHAR}
+			</if>
+			<if test="excelCellRowIndex != null">
+				and EXCEL_CELL_ROW_INDEX = #{excelCellRowIndex,jdbcType=INTEGER}
+			</if>
+			<if test="excelCellColumnIndex != null">
+				and EXCEL_CELL_COLUMN_INDEX = #{excelCellColumnIndex,jdbcType=INTEGER}
+			</if>
+			<if test="attribute1 != null">
+				and ATTRIBUTE1 = #{attribute1,jdbcType=VARCHAR}
+			</if>
+			<if test="attribute2 != null">
+				and ATTRIBUTE2 = #{attribute2,jdbcType=VARCHAR}
+			</if>
+			<if test="ownedSheets != null">
+				and OWNED_SHEET in
+				<foreach item="item" index="index" collection="ownedSheets" open="(" separator="," close=")">
+					#{item,jdbcType=VARCHAR}
+				</foreach>
+			</if>
+			<if test="excelCellColumnIndexs != null">
+				and EXCEL_CELL_COLUMN_INDEX in
+				<foreach item="item" index="index" collection="excelCellColumnIndexs" open="(" separator="," close=")">
+					#{item,jdbcType=INTEGER}
+				</foreach>
+			</if>
+		</where>
+		and USABLE_STATUS = "1"
+	</select>
+
+	<select id="selectCountByParams" resultType="java.lang.Double" parameterType="java.util.Map">
+		select count(1) from excel_cell_tab
+		<where>
+			1=1
+			<if test="ownedSheet != null">
+				and OWNED_SHEET = #{ownedSheet,jdbcType=VARCHAR}
+			</if>
+			<if test="excelCellValue != null">
+				and EXCEL_CELL_VALUE = #{excelCellValue,jdbcType=VARCHAR}
+			</if>
+			<if test="excelCellRowIndex != null">
+				and EXCEL_CELL_ROW_INDEX = #{excelCellRowIndex,jdbcType=INTEGER}
+			</if>
+			<if test="excelCellColumnIndex != null">
+				and EXCEL_CELL_COLUMN_INDEX = #{excelCellColumnIndex,jdbcType=INTEGER}
+			</if>
+			<if test="attribute1 != null">
+				and ATTRIBUTE1 = #{attribute1,jdbcType=VARCHAR}
+			</if>
+			<if test="attribute2 != null">
+				and ATTRIBUTE2 = #{attribute2,jdbcType=VARCHAR}
+			</if>
+			<if test="excelCellColumnIndexs != null">
+				and EXCEL_CELL_COLUMN_INDEX in
+				<foreach item="item" index="index" collection="excelCellColumnIndexs" open="(" separator="," close=")">
+					#{item,jdbcType=INTEGER}
+				</foreach>
+			</if>
+		</where>
+		and USABLE_STATUS = "1"
+	</select>
+
+	<select id="selectMaxRowIndexByParams" resultType="java.lang.Integer" parameterType="java.util.Map">
+		select max(EXCEL_CELL_ROW_INDEX) from excel_cell_tab
+		<where>
+			1=1
+			<if test="ownedSheet != null">
+				and OWNED_SHEET = #{ownedSheet,jdbcType=VARCHAR}
+			</if>
+			<if test="excelCellValue != null">
+				and EXCEL_CELL_VALUE = #{excelCellValue,jdbcType=VARCHAR}
+			</if>
+			<if test="excelCellRowIndex != null">
+				and EXCEL_CELL_ROW_INDEX = #{excelCellRowIndex,jdbcType=INTEGER}
+			</if>
+			<if test="excelCellColumnIndex != null">
+				and EXCEL_CELL_COLUMN_INDEX = #{excelCellColumnIndex,jdbcType=INTEGER}
+			</if>
+			<if test="attribute1 != null">
+				and ATTRIBUTE1 = #{attribute1,jdbcType=VARCHAR}
+			</if>
+			<if test="attribute2 != null">
+				and ATTRIBUTE2 = #{attribute2,jdbcType=VARCHAR}
+			</if>
+			<if test="excelCellColumnIndexs != null">
+				and EXCEL_CELL_COLUMN_INDEX in
+				<foreach item="item" index="index" collection="excelCellColumnIndexs" open="(" separator="," close=")">
+					#{item,jdbcType=INTEGER}
+				</foreach>
+			</if>
+		</where>
+
+	</select>
+</mapper>

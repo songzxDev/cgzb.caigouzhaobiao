@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.szx.cgzb.dao.TworkflowPersonRelationConditionsMapper" >
+  <resultMap id="BaseResultMap" type="cn.szx.cgzb.model.TworkflowPersonRelationConditions" >
+    <id column="WORKFLOW_PERSON_RELATION_CONDITIONS_ID" property="workflowPersonRelationConditionsId" jdbcType="INTEGER" />
+    <result column="WORKFLOW_PERSON_RELATION_ID" property="workflowPersonRelationId" jdbcType="BIGINT" />
+    <result column="CON_ID" property="conId" jdbcType="VARCHAR" />
+    <result column="LOGIC_TYPE" property="logicType" jdbcType="CHAR" />
+    <result column="CON_VALUE" property="conValue" jdbcType="VARCHAR" />
+    <result column="USABLE_STATUS" property="usableStatus" jdbcType="CHAR" />
+    <result column="CREATE_DATETIME" property="createDatetime" jdbcType="TIMESTAMP" />
+    <result column="ATTRIBUTE1" property="attribute1" jdbcType="VARCHAR" />
+    <result column="ATTRIBUTE2" property="attribute2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    WORKFLOW_PERSON_RELATION_CONDITIONS_ID, WORKFLOW_PERSON_RELATION_ID, CON_ID, LOGIC_TYPE, 
+    CON_VALUE, USABLE_STATUS, CREATE_DATETIME, ATTRIBUTE1, ATTRIBUTE2
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from workflow_person_relation_conditions
+    where WORKFLOW_PERSON_RELATION_CONDITIONS_ID = #{workflowPersonRelationConditionsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from workflow_person_relation_conditions
+    where WORKFLOW_PERSON_RELATION_CONDITIONS_ID = #{workflowPersonRelationConditionsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.szx.cgzb.model.TworkflowPersonRelationConditions" >
+    insert into workflow_person_relation_conditions (WORKFLOW_PERSON_RELATION_CONDITIONS_ID, WORKFLOW_PERSON_RELATION_ID, 
+      CON_ID, LOGIC_TYPE, CON_VALUE, 
+      USABLE_STATUS, CREATE_DATETIME, ATTRIBUTE1, 
+      ATTRIBUTE2)
+    values (#{workflowPersonRelationConditionsId,jdbcType=INTEGER}, #{workflowPersonRelationId,jdbcType=BIGINT}, 
+      #{conId,jdbcType=VARCHAR}, #{logicType,jdbcType=CHAR}, #{conValue,jdbcType=VARCHAR}, 
+      #{usableStatus,jdbcType=CHAR}, #{createDatetime,jdbcType=TIMESTAMP}, #{attribute1,jdbcType=VARCHAR}, 
+      #{attribute2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.szx.cgzb.model.TworkflowPersonRelationConditions" >
+    insert into workflow_person_relation_conditions
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="workflowPersonRelationConditionsId != null" >
+        WORKFLOW_PERSON_RELATION_CONDITIONS_ID,
+      </if>
+      <if test="workflowPersonRelationId != null" >
+        WORKFLOW_PERSON_RELATION_ID,
+      </if>
+      <if test="conId != null" >
+        CON_ID,
+      </if>
+      <if test="logicType != null" >
+        LOGIC_TYPE,
+      </if>
+      <if test="conValue != null" >
+        CON_VALUE,
+      </if>
+      <if test="usableStatus != null" >
+        USABLE_STATUS,
+      </if>
+      <if test="createDatetime != null" >
+        CREATE_DATETIME,
+      </if>
+      <if test="attribute1 != null" >
+        ATTRIBUTE1,
+      </if>
+      <if test="attribute2 != null" >
+        ATTRIBUTE2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="workflowPersonRelationConditionsId != null" >
+        #{workflowPersonRelationConditionsId,jdbcType=INTEGER},
+      </if>
+      <if test="workflowPersonRelationId != null" >
+        #{workflowPersonRelationId,jdbcType=BIGINT},
+      </if>
+      <if test="conId != null" >
+        #{conId,jdbcType=VARCHAR},
+      </if>
+      <if test="logicType != null" >
+        #{logicType,jdbcType=CHAR},
+      </if>
+      <if test="conValue != null" >
+        #{conValue,jdbcType=VARCHAR},
+      </if>
+      <if test="usableStatus != null" >
+        #{usableStatus,jdbcType=CHAR},
+      </if>
+      <if test="createDatetime != null" >
+        #{createDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attribute1 != null" >
+        #{attribute1,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute2 != null" >
+        #{attribute2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.szx.cgzb.model.TworkflowPersonRelationConditions" >
+    update workflow_person_relation_conditions
+    <set >
+      <if test="workflowPersonRelationId != null" >
+        WORKFLOW_PERSON_RELATION_ID = #{workflowPersonRelationId,jdbcType=BIGINT},
+      </if>
+      <if test="conId != null" >
+        CON_ID = #{conId,jdbcType=VARCHAR},
+      </if>
+      <if test="logicType != null" >
+        LOGIC_TYPE = #{logicType,jdbcType=CHAR},
+      </if>
+      <if test="conValue != null" >
+        CON_VALUE = #{conValue,jdbcType=VARCHAR},
+      </if>
+      <if test="usableStatus != null" >
+        USABLE_STATUS = #{usableStatus,jdbcType=CHAR},
+      </if>
+      <if test="createDatetime != null" >
+        CREATE_DATETIME = #{createDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attribute1 != null" >
+        ATTRIBUTE1 = #{attribute1,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute2 != null" >
+        ATTRIBUTE2 = #{attribute2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where WORKFLOW_PERSON_RELATION_CONDITIONS_ID = #{workflowPersonRelationConditionsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.szx.cgzb.model.TworkflowPersonRelationConditions" >
+    update workflow_person_relation_conditions
+    set WORKFLOW_PERSON_RELATION_ID = #{workflowPersonRelationId,jdbcType=BIGINT},
+      CON_ID = #{conId,jdbcType=VARCHAR},
+      LOGIC_TYPE = #{logicType,jdbcType=CHAR},
+      CON_VALUE = #{conValue,jdbcType=VARCHAR},
+      USABLE_STATUS = #{usableStatus,jdbcType=CHAR},
+      CREATE_DATETIME = #{createDatetime,jdbcType=TIMESTAMP},
+      ATTRIBUTE1 = #{attribute1,jdbcType=VARCHAR},
+      ATTRIBUTE2 = #{attribute2,jdbcType=VARCHAR}
+    where WORKFLOW_PERSON_RELATION_CONDITIONS_ID = #{workflowPersonRelationConditionsId,jdbcType=INTEGER}
+  </update>
+  <delete id="deleteAll">
+    delete from workflow_person_relation_conditions
+  </delete>
+</mapper>

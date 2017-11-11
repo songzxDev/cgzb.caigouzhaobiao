@@ -1,0 +1,2 @@
+获取本项目需要引入到pom.xml中的jar包信息查询<dependency>...</dependency>
+Maven信息的网址：http://search.maven.org/
